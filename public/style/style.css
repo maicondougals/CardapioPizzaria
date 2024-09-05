@@ -1,0 +1,249 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: black;
+  background-image: url("https://img.myloview.com.br/fotomurais/pizza-slices-seamless-pattern-hand-drawn-menu-background-with-pizza-and-ingredients-vector-sketch-illustration-engraved-style-food-background-700-202277670.jpg");
+}
+
+html {
+  font-size: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  z-index: 5;
+  width: auto;
+  height: auto;
+  top: 15px;
+  left: 50%;
+  transform: translate(-50%);
+  position: fixed;
+  border-radius: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+header .pizza-header-container {
+  width: 250px;
+  height: 250px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  box-shadow: 0 0 15px 5px darksalmon;
+  background-image: url("https://media.istockphoto.com/id/1400136454/pt/foto/wood-plank-panel-texture-outdated-mahogany-table-background.jpg?s=612x612&w=0&k=20&c=12qxKEdus-k0Py2dpfYngZ6u8PJhvOJJaHEHoNZMRGc=");
+}
+header .pizza-header-container .pizza-esquerda {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  clip-path: inset(0 50% 0 0); /* Corta 50% do lado esquerdo */
+  border-radius: 100%;
+}
+header .pizza-header-container .pizza-esquerda p {
+  color: black;
+  position: absolute;
+  width: auto;
+  right: 50%;
+  background-color: white;
+  box-shadow: 0 0 10px 1px black;
+  padding: 3px;
+  border-radius: 24px;
+  text-align: center;
+}
+header .pizza-header-container .pizza-direita {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+  clip-path: inset(0 0 0 50%); /* Corta 50% do lado direito */
+  border-radius: 100%;
+}
+header .pizza-header-container .pizza-direita p {
+  color: black;
+  position: absolute;
+  left: 50%;
+  width: auto;
+  background-color: white;
+  box-shadow: 0 0 10px 1px black;
+  padding: 3px;
+  border-radius: 24px;
+  text-align: center;
+}
+
+main {
+  max-width: 1000px;
+  margin: 350px auto auto auto;
+  height: 2000px;
+  background-color: rgba(255, 255, 255, 0.333);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  display: flex;
+}
+main .sabores-esquerdo-container {
+  width: 50%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .sabores-esquerdo-container .pizza-container {
+  max-width: 95%;
+  height: auto;
+  margin: 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 24px;
+  margin: 10px 0;
+}
+main .sabores-esquerdo-container .pizza-container p {
+  margin: 10px;
+  font-weight: 100;
+  font-size: 0.8rem;
+}
+main .sabores-esquerdo-container .pizza-container img {
+  width: 80%;
+  clip-path: inset(0 50% 0 0); /* Corta 50% do lado esquerdo */
+}
+main .sabores-esquerdo-container .pizza-container span {
+  font-size: 1.5rem;
+}
+main .sabores-esquerdo-container .pizza-container button {
+  width: 50%;
+  height: 40px;
+  border: 2px solid darkred;
+  margin: 4px;
+  border-radius: 24px;
+  background-color: white;
+  cursor: pointer;
+}
+main .sabores-direito-container {
+  width: 50%;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+main .sabores-direito-container .pizza-container {
+  max-width: 95%;
+  height: auto;
+  margin: 10px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 24px;
+  margin: 10px 0;
+}
+main .sabores-direito-container .pizza-container p {
+  margin: 10px;
+  font-weight: 100;
+  font-size: 0.8rem;
+}
+main .sabores-direito-container .pizza-container img {
+  width: 80%;
+  clip-path: inset(0 0 0 50%); /* Corta 50% do lado direito */
+}
+main .sabores-direito-container .pizza-container span {
+  font-size: 1.5rem;
+}
+main .sabores-direito-container .pizza-container button {
+  width: 50%;
+  height: 40px;
+  border: 2px solid darkred;
+  margin: 4px;
+  border-radius: 24px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.carrinho button {
+  position: fixed;
+  padding: 10px 50px;
+  background-color: red;
+  color: white;
+  bottom: 10px;
+  left: 50%;
+  border: 1px solid whitesmoke;
+  border-radius: 24px;
+  transform: translate(-50%);
+}
+
+.carrinho-modal-container {
+  display: none;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.58);
+  z-index: 10;
+}
+.carrinho-modal-container .carrinho-modal {
+  width: 350px;
+  height: auto;
+  background-color: white;
+  text-align: center;
+  border-radius: 24px;
+  padding: 10px;
+  color: black;
+}
+.carrinho-modal-container .carrinho-modal input {
+  border: 1px solid whitesmoke;
+  height: 30px;
+  width: 200px;
+  border-radius: 10px;
+  border-color: whitesmoke;
+  margin: 5px;
+}
+.carrinho-modal-container .carrinho-modal button {
+  padding: 10px;
+  background-color: white;
+  border: 1px solid whitesmoke;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  color: red;
+}
+.carrinho-modal-container .carrinho-modal p {
+  font-family: bold;
+}
+.carrinho-modal-container .carrinho-modal .carrinho-itens {
+  width: 95%;
+  height: auto;
+  text-align: left;
+  background-color: whitesmoke;
+  border-radius: 14px;
+  padding: 10px;
+}
+.carrinho-modal-container .carrinho-modal .span-container {
+  width: 100%;
+  height: auto;
+  background-color: whitesmoke;
+  color: red;
+  display: flex;
+  justify-content: space-around;
+}
+
+.carrinho-item {
+  font-style: normal;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.carrinho-item h3 {
+  font-size: 1rem;
+}
+
+/*# sourceMappingURL=style.css.map */

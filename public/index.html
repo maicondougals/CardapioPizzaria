@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <title>PIZZARIA</title>
+</head>
+<body>
+    <header>
+        
+        <div class="pizza-header-container">
+            <div class="pizza-direita"></div>
+            <div class="pizza-esquerda"></div>
+            
+        </div>
+        
+    </header>
+    <main>
+        <div class="sabores-esquerdo-container">
+         
+            <div class="pizza-container">
+                <h4>Champignon</h4> 
+                <img class="pizza-esquerda" src="assets/pizza3.webp" alt="">
+                <p>A pizza artesanal de Champignon é uma delícia sofisticada, feita com molho de tomate, muçarela derretida, champignons frescos, pedaços crocantes de bacon e um toque de orégano, proporcionando uma experiência de sabor rica e aromática. A massa sempre macia e crocante, de fácil digestão!</p>
+                <span>R$15.00</span><br>
+                <button
+                class="add-to-card-btn"
+                title="Adicionar"
+                data-img="assets/pizza3.webp"
+                data-name="Champignon"
+                data-lado="esquerdo"
+                data-price="15.00"
+                >+</button>
+                
+            </div>
+
+            <div class="pizza-container">
+                <h4>Calabresa</h4> 
+                <img class="pizza-esquerda" src="assets/pizza1.png" alt="">
+                <p>Linguiça Calabresa, rodelas de cebolas frescas, azeitonas pretas, mussarela, polpa de tomate, orégano e massa especial</p>
+                <span>R$19.90</span><br>
+                <button
+                class="add-to-card-btn"
+                title="Adicionar"
+                data-img="assets/pizza1.png"
+                data-name="Calabresa"
+                data-lado="esquerdo"
+                data-price="19.90"
+                >+</button>
+                
+            </div>
+        </div>
+
+        <!--                      -->
+        <div class="sabores-direito-container">
+            <div class="pizza-container">
+                <h4>Patrón</h4> 
+                <img class="pizza-esquerda" src="assets/pizza4.webp" alt="">
+                <span>R$25.99</span><br>
+                <p>Nem sem o que tem nessa pizza...</p>
+                <button
+                class="add-to-card-btn"
+                title="Adicionar"
+                data-img="assets/pizza4.webp"
+                data-name="Patrón"
+                data-lado="direito"
+                data-price="25.99"
+                >+</button>
+                
+            </div>
+
+            <div class="pizza-container">
+                <h4>Chocolate</h4> 
+                <img class="pizza-esquerda" src="assets/pizza2.png" alt="">
+                <p>Bastante chocolate para quem gosta!</p>
+                <span>R$15.99</span><br>
+                <button
+                class="add-to-card-btn"
+                title="Adicionar"
+                data-img="assets/pizza2.png"
+                data-name="Chocolate"
+                data-lado="direito"
+                data-price="15.99"
+                >+</button>
+                
+            </div>
+        </div>
+    </main>
+
+    <div class="carrinho">
+        <button>
+            Confirmar pedido
+        </button>
+    </div>
+
+    <!--CARD DO CARRINHO-->
+    <div class="carrinho-modal-container">
+        <div class="carrinho-modal">
+            <p>Resumo do seu pedido:</p>
+
+            <div class="carrinho-itens">
+               
+            </div>
+            <p>Total R$: <span class="card-total">0.00</span></p>
+            
+            <input 
+            type="text"
+            placeholder="Digite seu endereço"
+            id="address">
+           
+            <div class="span-container">
+                <span class="address-vazio-message" style="display: none;">Preencha o endereço</span>
+            </div>
+           
+            <button
+            class="buy-btn"
+            >Fazer pedido</button>
+
+            <button class="btn-fechar-modal" style="color: black;">Fechar</button>
+        </div>
+    </div>
+   
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+</body>
+<script src="js/index.js"></script>
+</html>

@@ -8,92 +8,122 @@
     <title>PIZZARIA</title>
 </head>
 <body>
-    <header>
-        
+    <div class="categoria-container">
+        <a
+        id="btn-categoria-pizzas"
+        href="#pizzas"
+        >Pizzas</a>
+        <a
+        id="btn-categoria-bebidas"
+        href="#bebidas"
+        >Bebidas</a>
+       
+    </div>
+
+    <div class="header" style="transform: translateX(-100%) translateY(-360px);">
+
         <div class="pizza-header-container">
+            
             <div class="pizza-direita"></div>
             <div class="pizza-esquerda"></div>
             
         </div>
-        
-    </header>
-    <main>
-        <div class="sabores-esquerdo-container">
-         
-            <div class="pizza-container">
-                <h4>Champignon</h4> 
-                <img class="pizza-esquerda" src="assets/pizza3.webp" alt="">
-                <p>A pizza artesanal de Champignon é uma delícia sofisticada, feita com molho de tomate, muçarela derretida, champignons frescos, pedaços crocantes de bacon e um toque de orégano, proporcionando uma experiência de sabor rica e aromática. A massa sempre macia e crocante, de fácil digestão!</p>
-                <span>R$15.00</span><br>
-                <button
-                class="add-to-card-btn"
-                title="Adicionar"
-                data-img="assets/pizza3.webp"
-                data-name="Champignon"
-                data-lado="esquerdo"
-                data-price="15.00"
-                >+</button>
-                
-            </div>
+        <div class="bebidas-header-container"></div>
 
-            <div class="pizza-container">
-                <h4>Calabresa</h4> 
-                <img class="pizza-esquerda" src="assets/pizza1.png" alt="">
-                <p>Linguiça Calabresa, rodelas de cebolas frescas, azeitonas pretas, mussarela, polpa de tomate, orégano e massa especial</p>
-                <span>R$19.90</span><br>
-                <button
-                class="add-to-card-btn"
-                title="Adicionar"
-                data-img="assets/pizza1.png"
-                data-name="Calabresa"
-                data-lado="esquerdo"
-                data-price="19.90"
-                >+</button>
-                
-            </div>
+        <div class="carrinho">
+            <button>
+                Pedir agora <i class="fa-brands fa-opencart"></i>
+            </button>
         </div>
 
-        <!--                      -->
-        <div class="sabores-direito-container">
-            <div class="pizza-container">
-                <h4>Patrón</h4> 
-                <img class="pizza-esquerda" src="assets/pizza4.webp" alt="">
-                <span>R$25.99</span><br>
-                <p>Nem sem o que tem nessa pizza...</p>
-                <button
-                class="add-to-card-btn"
-                title="Adicionar"
-                data-img="assets/pizza4.webp"
-                data-name="Patrón"
-                data-lado="direito"
-                data-price="25.99"
-                >+</button>
-                
-            </div>
-
-            <div class="pizza-container">
-                <h4>Chocolate</h4> 
-                <img class="pizza-esquerda" src="assets/pizza2.png" alt="">
-                <p>Bastante chocolate para quem gosta!</p>
-                <span>R$15.99</span><br>
-                <button
-                class="add-to-card-btn"
-                title="Adicionar"
-                data-img="assets/pizza2.png"
-                data-name="Chocolate"
-                data-lado="direito"
-                data-price="15.99"
-                >+</button>
-                
-            </div>
-        </div>
-    </main>
-
-    <div class="carrinho">
-        <button>
-            Confirmar pedido
+        <button
+        class="btn-expand-card"
+        ><i class="fa-solid fa-cart-shopping"></i>
+        Conferir Pedido
         </button>
     </div>
+
+    <main>
+        <div class="cards-container">
+            
+            <div class="pizza-category" id="pizzas">
+                <h1>Pizzas <hr></h1>
+
+                <div class="card" data-category="pizza">
+                    <!--Imagem ilustrativa da pizza-->
+                    <img class="pizza-img" src="assets/pizza3.webp" title="Imagem ilustrativa da pizza" alt="Imagem ilustrativa da pizza">
+                    <!--Título-->
+                    <h4>Champignon</h4> 
+                    <!--Descrição do sabor da pizza-->
+                    <p><i class="fa-solid fa-utensils"></i>tomates maduros sem sementes picados...</p>
+                    <!--Valor da metade da pizza-->
+                    <span>R$15.00<p>(A metade)</p></span><br>
+                    <!--div com os botões que adiciona o pedaço esquerdo e direito da pizza-->
+                    <div class="button-group">
+                        <button class="add-to-card-btn" title="Adicionar" data-img="assets/pizza3.webp" data-name="Champignon" data-lado="esquerdo" data-price="15.00">
+                            <img src="assets/metade-pizza-icon.jpg" alt="Icone metade da pizza"> 
+                        </button>
+                        <button class="add-to-card-btn" title="Adicionar" data-img="assets/pizza3.webp" data-name="Champignon" data-lado="direito" data-price="15.00">
+                            <img src="assets/metade-pizza-icon.jpg" alt="Icone metade da pizza"> 
+                        </button>
+                    </div>
+                </div>
+                <div class="card" data-category="pizza">
+                    <!--Imagem ilustrativa da pizza-->
+                    <img class="pizza-img" src="assets/pizza2.png" title="Imagem ilustrativa da pizza" alt="Imagem ilustrativa da pizza">
+                    <!--Título-->
+                    <h4>Chocolate</h4> 
+                    <!--Descrição do sabor da pizza-->
+                    <p><i class="fa-solid fa-utensils"></i>Muito chocolate para quem gosta...</p>
+                    <!--Valor da metade da pizza-->
+                    <span>R$19.00<p>(A metade)</p></span><br>
+                    
+                    <!--div com os botões que adiciona o pedaço esquerdo e direito da pizza-->
+                    <div class="button-group">
+                        <button class="add-to-card-btn" title="Adicionar" data-img="assets/pizza2.png" data-name="Chocolate" data-lado="esquerdo" data-price="19.00">
+                            <img src="assets/metade-pizza-icon.jpg" alt="Icone metade da pizza"> 
+                        </button>
+                        <button class="add-to-card-btn" title="Adicionar" data-img="assets/pizza2.png" data-name="Chocolate" data-lado="direito" data-price="19.00">
+                            <img src="assets/metade-pizza-icon.jpg" alt="Icone metade da pizza"> 
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="bebida-category" id="bebidas">
+                <h1>Bebidas <hr></h1>
+                <div class="card" data-category="bebidas">
+                    <!--Imagem ilustrativa da pizza-->
+                    <img class="pizza-img" src="https://s3-sa-east-1.amazonaws.com/superimg/img.produtos/7894900011753/img_500_1.png" title="Imagem ilustrativa da pizza" alt="Imagem ilustrativa da pizza">
+                    <!--Título-->
+                    <h4>Coca cola 1,5L</h4> 
+                    <!--Descrição do sabor da pizza-->
+                    <p><i class="fa-solid fa-utensils"></i>Descrição da bebida</p>
+                    <!--Valor da metade da pizza-->
+                    <span>R$12,99<p>(Un.)</p></span><br>
+    
+                    <div class="button-group">
+                        <button
+                        class="add-to-card-btn-bebidas"
+                        title="Adicionar"
+                        data-img="https://s3-sa-east-1.amazonaws.com/superimg/img.produtos/7894900011753/img_500_1.png"
+                        data-name="Coca cola 1,5L"
+                        data-lado="esquerdo"
+                        data-price="12.99"
+                        >Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+ 
+       
+    </main>
+
+    
 
     <!--CARD DO CARRINHO-->
     <div class="carrinho-modal-container">
@@ -121,8 +151,17 @@
             <button class="btn-fechar-modal" style="color: black;">Fechar</button>
         </div>
     </div>
-   
+    <!--importação do gsap para animações-->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+    <!--importação do font awesome que uso para colocar icons no site-->
+    <script src="https://kit.fontawesome.com/a6e113ca31.js" crossorigin="anonymous"></script>
+    <!--importação do toastify (biclioteca que faz aparecer banners na tela)-->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 </body>
 <script src="js/index.js"></script>
+<script>
+    
+</script>
 </html>

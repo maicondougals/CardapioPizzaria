@@ -3,36 +3,77 @@ body{
     padding: 0;
     box-sizing: border-box;
 
-background-color: black;
-    background-image: url('https://img.myloview.com.br/fotomurais/pizza-slices-seamless-pattern-hand-drawn-menu-background-with-pizza-and-ingredients-vector-sketch-illustration-engraved-style-food-background-700-202277670.jpg');
+    background-color: white;
+    //background-image: url('https://img.myloview.com.br/fotomurais/pizza-slices-seamless-pattern-hand-drawn-menu-background-with-pizza-and-ingredients-vector-sketch-illustration-engraved-style-food-background-700-202277670.jpg');
 
 }
 html{
     font-size: 100%;
     font-family:Arial, Helvetica, sans-serif;
+
+    scroll-behavior:smooth;
 }
-header{
-    z-index: 5;
-    width: auto;
-    height: auto;
-    top: 15px;
-    left: 50%;
-    transform: translate(-50%);
+.categoria-container{
+    width: 100vw;
+    height: 30px;
+
 
     position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid darkred;
+    //border-radius: 0 24px 0 0;
+    //box-shadow: 0px 30px 30px 1px #00000030;
+    background-color: white;
+    z-index: 5;
+    a{
+        min-width: 100px;
+        height: 80%;
+        text-decoration: none;
+        color: black;
+        text-align: center;
+        //border-radius: 24px;
+        cursor: pointer;
+        
+        //
+    }
+}
 
-    border-radius: 100%;
+.header{
+    z-index: 4;
+    width: auto;
+    height: auto;
+    top: 30px;
+    
+    left:100%;
+ 
+    transition: .7s all;
+    gap: 20px;
+    position: fixed;
+    padding: 5px;
 
+    border-radius:0 0 0 24px  ;
+
+    border-left: 1px solid darkred;
+    border-bottom: 1px solid darkred;
+
+    //box-shadow: 0px 30px 30px 1px #00000030;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: end;
+    justify-content: space-around;
 
-   
+    background-color: white;
     color: white;
+
+
     .pizza-header-container{
-        width: 250px;
-        height: 250px;
+        width: 170px;
+        height: 170px;
         position: relative;
         
         display: flex;
@@ -44,13 +85,15 @@ header{
         border-radius: 100%;
         //padding: 10px;
 
-        box-shadow: 0 0 15px 5px darksalmon;
+        box-shadow: 0 0 15px 1px sienna;
         
         background-image: url('https://media.istockphoto.com/id/1400136454/pt/foto/wood-plank-panel-texture-outdated-mahogany-table-background.jpg?s=612x612&w=0&k=20&c=12qxKEdus-k0Py2dpfYngZ6u8PJhvOJJaHEHoNZMRGc=');
+        
         .pizza-esquerda{
             position: absolute;
-            width: 230px;
-            height: 230px;
+            //transform: translateX(100px);
+            width: 150px;
+            height: 150px;
 
             
     
@@ -64,19 +107,20 @@ header{
                 position: absolute;
                 width: auto;
                 right: 50%;
+
                 background-color: white;
-                box-shadow: 0 0 10px 1px black;
+                box-shadow:0 5px  10px 1px black;
                 padding: 3px;
-                border-radius: 24px;
+                //border-radius: 24px;
                 text-align: center;
-                
+                font-size: .7rem;
 
             }
         }
         .pizza-direita{
             position: absolute;
-            width: 230px;
-            height: 230px;
+            width: 150px;
+            height: 150px;
     
             clip-path: inset(0 0 0 50%); /* Corta 50% do lado direito */
             border-radius: 100%;
@@ -89,128 +133,201 @@ header{
                 left: 50%;
                 width: auto;
                 background-color: white;
-                box-shadow: 0 0 10px 1px black;
+                box-shadow:0 5px  10px 1px black;
                 padding: 3px;
-                border-radius: 24px;
+                //border-radius: 24px;
                 text-align: center;
-                
+                font-size: .7rem;
 
             }
         }
     }
+    .bebidas-header-container{
+        width: auto;
+        height: 120px;
+        
+
+        //position: absolute;
+        //right: 0;
+        //top: 500px;
+        //ackground-color: rgba(177, 79, 79, 0.259);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+        img{
+            width: auto;
+            height: 100%;
+        }
+        p{
+            font-size: .8rem;
+            //position: absolute;
+            right: 0;
+            color: black;
+     
+            background-color: white;
+            box-shadow:0 5px  10px 1px black;
+            padding: 3px;
+            //border-radius: 24px;
+            text-align: center;
+        }
+
+    }
+    button{
+        border-radius:0 0 100% 100%;
+        padding: 15px;
+        margin: 0 auto;
+        margin-bottom: -51px;
+        border-bottom: 1px solid darkred;
+        border-left: 1px solid darkred;
+        border-right: 1px solid darkred;
+        border-top: none;
+        background-color: white;
+        color: red;
+        cursor: pointer;
+        z-index: 6;
+    }
     
 }
+
 main{
     
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 350px auto auto auto;
 
     height: 2000px;
 
-    background-color:rgba(255, 255, 255, 0.333);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    background-color:whitesmoke;
+    //-webkit-backdrop-filter: blur(8px);
+    //backdrop-filter: blur(8px);
 
 
     border-radius: 24px;
     display: flex;
-    .sabores-esquerdo-container{
-        width: 50%;
-        height: 600px;
+    .cards-container{
+        width: 100%;
+        height: 100%;
+        
 
         display: flex;
-        flex-direction: column;
-        align-items: center;
 
+        flex-direction: column;
+        //justify-content: center;
         
 
         //background-color: rgb(255, 156, 156);
-        .pizza-container{
-            max-width: 95%;
+        .pizza-category{
+            //background-color: black;
+            //text-align: center;
+            h1{
+                font-size: 1.5rem;
+                margin-left: 20px;
+            }
+        }
+        .bebida-category{
+            //text-align: center;
+            //background-color: black;
+            h1{
+                font-size: 1.5rem;
+                margin-left: 20px;
+            }
+        }
+        .card{
+            width: 200px;
             height: auto;
-            margin: 10px;
+            //margin-left: -100px;
 
             text-align: left;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: space-around;
 
-            background-color: whitesmoke;
+            background: linear-gradient( white,white);
           
-            border-radius: 24px;
-            margin: 10px 0;
+            border-radius: 50% 50% 24px 24px;
+            margin: 10px;
             p{
                 margin: 10px;
                 font-weight: 100;
                 font-size: .8rem;
+                width: 70%;
+                background-color:white;
+                padding: 10px 5px;
+                border-radius: 4px;
+                border-bottom: 1px solid black;
+                
+                i{
+                    font-size: 1.5rem;
+                    margin-right: 10px;
+                   
+                }
             }
             img{
-                width: 80%;
+                width: 100%;
+                //top: -10px;
                 //margin: 0 auto;
-                clip-path: inset(0 50% 0 0); /* Corta 50% do lado esquerdo */
+                //clip-path: inset(0 50% 0 0); /* Corta 50% do lado esquerdo */
             }
             span{
                 font-size: 1.5rem;
+                
+                display: flex;
+                align-items: center;
+                p{
+                    font-size: 10px;
+                    border: none;
+                }
             }
-            button{
-                width: 50%;
-                height: 40px;
-                border: 2px solid darkred;
-                margin: 4px;
-                border-radius: 24px;
-                background-color: white;
-                cursor: pointer;
+            button:nth-of-type(1), button:nth-of-type(2){
+                display: inline-block;
+                margin-right: 10px; /* Espaço entre os botões */
+                img{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+               
             }
-        }
-
+            button:nth-of-type(1){
+                width: auto;
+                height: 60px;
         
-    }
-    .sabores-direito-container{
-        width: 50%;
-        height: 600px;
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      
-        //background-color: rgb(199, 255, 143);
-        .pizza-container{
-            max-width: 95%;
-            height: auto;
-            margin: 10px;
-
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            background-color: whitesmoke;
-          
-            border-radius: 24px;
-            margin: 10px 0;
-            p{
-                margin: 10px;
-                font-weight: 100;
-                font-size: .8rem;
-            }
-            img{
-                width: 80%;
-                //margin: 0 auto;
-                clip-path: inset(0 0 0 50%); /* Corta 50% do lado direito */
-            }
-            span{
-                font-size: 1.5rem;
-            }
-            button{
-                width: 50%;
-                height: 40px;
-                border: 2px solid darkred;
+                //border: 2px solid green;
+                border-color: red;
                 margin: 4px;
                 border-radius: 24px;
                 background-color: white;
                 cursor: pointer;
+                img{
+                    height: 100%;
+                    width: auto;
+                    border-radius: 24px;
+                    z-index: 0;
+                    
+                }
+            }
+            button:nth-of-type(2){
+                width: auto;
+                height: 60px;
+                
+
+                border-color: red;
+                margin: 4px;
+                border-radius: 24px;
+                background-color: white;
+                cursor: pointer;
+                img{
+                    height: 100%;
+                    width: auto;
+                    border-radius: 24px;
+                    transform: rotate(180deg);
+                    z-index: 0;
+                }
             }
         }
+
         
     }
     
@@ -219,14 +336,20 @@ main{
 .carrinho{
     button{
         position: fixed;
-        padding: 10px 50px;
-        background-color: red;
-        color: white;
-        bottom: 10px;
-        left: 50%;
-        border: 1px solid whitesmoke;
+        padding: 10px 20px;
+        background-color:whitesmoke;
+        color: red;
+        //bottom: 10px;
+        right: 20px;
+        top:315px;
+        
+        //border: 1px solid darkred;
+        border: none;
         border-radius: 24px;
-        transform: translate(-50%);
+        cursor: pointer;
+
+        z-index: 5;
+     
     }
 }
 .carrinho-modal-container{
@@ -282,10 +405,7 @@ main{
             text-decoration: none;
             color: red;
         }
-        p{
-            font-family: bold;
-            
-        }
+       
         .carrinho-itens{
             width: 95%;
             height: auto;
@@ -312,8 +432,9 @@ main{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    h3{
+    p{
         font-size: 1rem;
+        font-weight: 100;
         
         //color: green;
     }

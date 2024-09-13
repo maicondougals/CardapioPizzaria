@@ -11,7 +11,7 @@ const pizzaHeaderDireita = document.querySelector('.pizza-direita')
 
 
 //FUNÇÃO PARA IDENTIFICAR QUE CLICOU NO BOTÃODE ADICIONAR ESPECÍFICO
-main.addEventListener('click', function(event){
+main.addEventListener('click', function(event){ 
     let parentButton = event.target.closest(".add-to-card-btn");
    
     if (parentButton) {
@@ -19,11 +19,41 @@ main.addEventListener('click', function(event){
         const img = parentButton.getAttribute("data-img");
         const name = parentButton.getAttribute("data-name");
         const price = parseFloat(parentButton.getAttribute("data-price"));
-
+        
         if (lado === 'esquerdo') {
-            ladoEsquerdo(img, name, price);
+             // Verifica se já existe algum item no array ladoEsquerdo
+             
+            if (saborEsquerdo.length > 0) {
+                // Remove informações do array (reseta o array)
+                saborEsquerdo.length = 0;
+               
+                parentButton.style.borderColor = 'red'; // Reseta a borda
+                //console.log('Informações removidas do array saborEsquerdo.');
+                updatePizza();
+                uptadetoCardModal();
+            } else {
+                // Adiciona informações ao array ladoEsquerdo
+                ladoEsquerdo(img, name, price);
+                parentButton.style.borderColor = 'green'; // Reseta a borda
+                //console.log('Informações adicionadas ao array saborEsquerdo.');
+                gsap.fromTo(".pizza-esquerda", { opacity: 0 }, { opacity: 1, duration: .5 });
+            }
         } else {
-            ladoDireito(img, name, price);
+             // Verifica se já existe algum item no array ladoDireito
+            if (saborDireito.length > 0) {
+                // Remove informações do array (reseta o array)
+                saborDireito.length = 0;
+                parentButton.style.borderColor = 'red'; // Reseta a borda
+                //console.log('Informações removidas do array saborDireito.');
+                updatePizza();
+                uptadetoCardModal();
+            } else {
+                // Adiciona informações ao array ladoDireito
+                ladoDireito(img, name, price);
+                parentButton.style.borderColor = 'green'; // Reseta a borda
+                //console.log('Informações adicionadas ao array saborDireito.');
+                gsap.fromTo(".pizza-direita", { opacity: 0 }, { opacity: 1, duration: .5 });
+            }
         }
     }
 });
@@ -63,7 +93,7 @@ function ladoDireito(img, name, price){
 
 
 
-
+//FAZER APARECER A ILUSTRAÇÃO
 function updatePizza(){
     pizzaHeaderEsquerda.innerHTML = ``
     pizzaHeaderDireita.innerHTML = ``
@@ -71,7 +101,7 @@ function updatePizza(){
     saborEsquerdo.forEach(item =>{
         
         pizzaHeaderEsquerda.innerHTML = `
-         <img class="pizza-esquerda" src="${item.img}" alt="">
+         <img class="pizza-esquerda" src="${item.img}" alt="${item.name}">
          <p>${item.name}</p>
         `
        
@@ -82,7 +112,7 @@ function updatePizza(){
      
        
         pizzaHeaderDireita.innerHTML = `
-        <img class="pizza-direita" src="${item.img}" alt="">
+        <img class="pizza-direita" src="${item.img}" alt="${item.name}">
         <p>${item.name}</p>
         `
         
@@ -91,6 +121,82 @@ function updatePizza(){
 
     
 }
+
+
+
+//-------------------------------------------- B E B I D A
+
+const btnAddBebida = document.querySelector('.add-to-card-btn-bebidas')
+
+const bebidasHeader = document.querySelector('.bebidas-header-container')
+
+const mainContainer = document.querySelector('.cards-container')
+
+
+
+
+//FUNÇÃO PARA IDENTIFICAR QUE CLICOU NO BOTÃODE ADICIONAR ESPECÍFICO
+main.addEventListener('click', function(event){
+    let parentButton = event.target.closest(".add-to-card-btn-bebidas");
+   
+    if (parentButton) {
+        //const lado = parentButton.dataset.lado;
+        const img = parentButton.getAttribute("data-img");
+        const name = parentButton.getAttribute("data-name");
+        const price = parseFloat(parentButton.getAttribute("data-price"));
+        if(bebidas.length > 0){
+         
+            btnAddBebida.style.borderColor = 'red'
+               btnAddBebida.innerHTML = 'Adicionar'
+            bebidas.length = 0
+            updateBebidas();
+            uptadetoCardModal();
+        }else{
+            btnAddBebida.style.borderColor = 'green'
+            btnAddBebida.innerHTML = 'Remover'
+            mandarBebidas(img, name, price)
+           
+            updateBebidas();
+            uptadetoCardModal();
+        }
+      
+       
+        gsap.fromTo(".bebidas-header-container", { opacity: 0 }, { opacity: 1, duration: .5 });
+        
+       
+    }
+});
+
+// ARRAY ONDE ARMAZENARÁ OS DADOS DA PIZZA ESQUERDA
+let bebidas = [];
+
+// FUNÇÃO PARA MANDAR OS DADOS IDENTIFICADOS ONDE CLICOU PARA O ARRAY ESQUERDO
+function mandarBebidas(img, name, price){
+    bebidas = [{ 
+        img,
+        name, 
+        price
+    }]; // Substitui o conteúdo do array
+    localStorage.setItem('bebidas', JSON.stringify(bebidas));
+    updateBebidas()
+    uptadetoCardModal()
+    
+}
+//FAZER APARECER A ILUSTRAÇÃO
+function updateBebidas(){
+    bebidasHeader.innerHTML = ``
+    
+    //console.log(pizzaHeader)
+    bebidas.forEach(item =>{
+        bebidasHeader.innerHTML = `
+        <img src="${item.img}" alt="">
+        <p>${item.name}</p>
+        `
+    })
+
+}
+
+
 
 
 
@@ -108,6 +214,21 @@ const cardTotal = document.querySelector('.card-total')
 const buyBtn = document.querySelector('.buy-btn')
 
 const inputAddress = document.querySelector('#address')
+
+const btnExpand = document.querySelector('.btn-expand-card')
+
+btnExpand.addEventListener('click', function(){
+
+    if( document.querySelector('.header').style.transform === 'translateX(-100%) translateY(-360px)'){
+        document.querySelector('.header').style.transform = 'translateX(-100%) translateY(0)'
+        
+    }else{
+        document.querySelector('.header').style.transform = 'translateX(-100%) translateY(-360px)'
+    }
+    console.log('bacana')
+})
+
+
 //ABRIR MODAL CLICANDO NO BOTÃO
 btnCarrinho.addEventListener('click', function(){
     carrinhoContainer.style.display = 'flex'
@@ -137,8 +258,8 @@ function uptadetoCardModal(){
         const divCard = document.createElement('div')
         divCard.classList.add('carrinho-item')
         divCard.innerHTML=`
-        <h3>Metade:${item.name}</h3>
-        <h3>R$:${item.price.toFixed(2)}</h3>
+        <p>Metade: ${item.name}</p>
+        <p>R$:${item.price.toFixed(2)}</p>
         `;
         //DEFINIR INNERHTML
         carrinhoItens.appendChild(divCard)
@@ -153,8 +274,24 @@ function uptadetoCardModal(){
         const divCard = document.createElement('div')
         divCard.classList.add('carrinho-item')
         divCard.innerHTML=`
-        <h3>Metade:${item.name}</h3>
-        <h3>R$:${item.price.toFixed(2)}</h3>
+        <p>Metade: ${item.name}</p>
+        <p>R$:${item.price.toFixed(2)}</p>
+        `;
+        //DEFINIR INNERHTML
+        carrinhoItens.appendChild(divCard)
+
+        //SOMAR TOTAL DOS ITENS
+        totalDireito = item.price
+        total += totalDireito;
+        
+
+    });
+    bebidas.forEach(item => {
+        const divCard = document.createElement('div')
+        divCard.classList.add('carrinho-item')
+        divCard.innerHTML=`
+        <p>Bebida: ${item.name}</p>
+        <p>R$:${item.price.toFixed(2)}</p>
         `;
         //DEFINIR INNERHTML
         carrinhoItens.appendChild(divCard)
@@ -201,6 +338,9 @@ buyBtn.addEventListener('click', function(){
             }
           }).showToast();
     }
+    if(bebidas.length === 0){
+        confirm("deseja adicionar bebida")
+    }
     if(inputAddress.value === ""){
         document.querySelector('.address-vazio-message').style.display = 'block'
         inputAddress.style.borderColor = 'red'
@@ -218,7 +358,7 @@ buyBtn.addEventListener('click', function(){
         let total = 0
         total += item.price * item.quantity;
         return (
-            `Metade: ${item.name}       `
+            `Metade: ${item.name}\n`
         )
 
     }).join("")
@@ -226,13 +366,21 @@ buyBtn.addEventListener('click', function(){
         let total = 0
         total += item.price * item.quantity;
         return (
-            `Metade: ${item.name}       |`
+            `Metade: ${item.name}\n`
         )
 
     }).join("")
-    const combinedPrice = saborEsquerdo[0].price + saborDireito[0].price;
+    const bebida = bebidas.map((item) =>{
+        let total = 0
+        total += item.price * item.quantity ;
+        return (
+            `Bebida: ${item.name}\n`
+        )
 
-    const message = encodeURIComponent("Boa noite! Gostaria de pedir uma pizza " +itemEsquerdo + itemDireito + "Total R$:" + combinedPrice.toFixed(2))
+    }).join("")
+    const combinedPrice = saborEsquerdo[0].price + bebidas[0].price + saborDireito[0].price;
+
+    const message = encodeURIComponent("Boa noite! Gostaria de pedir uma pizza\n" +itemEsquerdo + itemDireito + bebida + "Total R$:" + combinedPrice.toFixed(2))
     const phone = "61998497382"
 
     window.open(`https://wa.me/${phone}?text=${message}  Endereço:${inputAddress.value}`,

@@ -9,54 +9,56 @@ const pizzaHeaderEsquerda = document.querySelector('.pizza-esquerda')
 //ONDE FICARÁ A IMAGEM ILUSTRATIVA DA PIZZA DIREITA
 const pizzaHeaderDireita = document.querySelector('.pizza-direita')
 
+function resetBorderButton(lado){
+    const buttons = document.querySelectorAll(`.add-to-card-btn[data-lado='${lado}']`)
+
+    buttons.forEach(button => {
+        button.style.borderColor='red';
+    })
+}
+
+
+
+
+function handlePizzaSelection(button, lado){
+    const img = button.getAttribute('data-img')
+    const name= button.getAttribute('data-name')
+    const price = parseFloat(button.getAttribute('data-price'))
+
+    if(lado === 'esquerdo'){
+        if(saborEsquerdo.length > 0 && saborEsquerdo[0].name === name){
+            saborEsquerdo = []
+            button.style.borderColor = 'red'
+        }else{
+            resetBorderButton('esquerdo')
+            saborEsquerdo = [{ img, name, price}]
+            button.style.borderColor = 'green'
+        }
+    }else {
+        if(saborDireito.length > 0 && saborDireito[0].name ===name){
+            saborDireito = []
+            button.style.borderColor = 'red'
+        }else{
+            resetBorderButton('direito')
+            saborDireito = [{ img, name, price }]
+            button.style.borderColor = 'green'
+        }
+    }
+    updatePizza();
+    uptadetoCardModal();
+}
+
 
 //FUNÇÃO PARA IDENTIFICAR QUE CLICOU NO BOTÃODE ADICIONAR ESPECÍFICO
 main.addEventListener('click', function(event){ 
     let parentButton = event.target.closest(".add-to-card-btn");
    
     if (parentButton) {
-        const lado = parentButton.dataset.lado;
-        const img = parentButton.getAttribute("data-img");
-        const name = parentButton.getAttribute("data-name");
-        const price = parseFloat(parentButton.getAttribute("data-price"));
-        
-        if (lado === 'esquerdo') {
-             // Verifica se já existe algum item no array ladoEsquerdo
-             
-            if (saborEsquerdo.length > 0) {
-                // Remove informações do array (reseta o array)
-                saborEsquerdo.length = 0;
-               
-                parentButton.style.borderColor = 'red'; // Reseta a borda
-                //console.log('Informações removidas do array saborEsquerdo.');
-                updatePizza();
-                uptadetoCardModal();
-            } else {
-                // Adiciona informações ao array ladoEsquerdo
-                ladoEsquerdo(img, name, price);
-                parentButton.style.borderColor = 'green'; // Reseta a borda
-                //console.log('Informações adicionadas ao array saborEsquerdo.');
-                gsap.fromTo(".pizza-esquerda", { opacity: 0 }, { opacity: 1, duration: .5 });
-            }
-        } else {
-             // Verifica se já existe algum item no array ladoDireito
-            if (saborDireito.length > 0) {
-                // Remove informações do array (reseta o array)
-                saborDireito.length = 0;
-                parentButton.style.borderColor = 'red'; // Reseta a borda
-                //console.log('Informações removidas do array saborDireito.');
-                updatePizza();
-                uptadetoCardModal();
-            } else {
-                // Adiciona informações ao array ladoDireito
-                ladoDireito(img, name, price);
-                parentButton.style.borderColor = 'green'; // Reseta a borda
-                //console.log('Informações adicionadas ao array saborDireito.');
-                gsap.fromTo(".pizza-direita", { opacity: 0 }, { opacity: 1, duration: .5 });
-            }
-        }
+        const lado = parentButton.dataset.lado; // 'esquerdo' ou 'direito'
+        handlePizzaSelection(parentButton, lado);
     }
 });
+
 
 // ARRAY ONDE ARMAZENARÁ OS DADOS DA PIZZA ESQUERDA
 let saborEsquerdo = [];

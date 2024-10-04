@@ -7,6 +7,7 @@ body{
     //background-image: url('https://img.myloview.com.br/fotomurais/pizza-slices-seamless-pattern-hand-drawn-menu-background-with-pizza-and-ingredients-vector-sketch-illustration-engraved-style-food-background-700-202277670.jpg');
 
 }
+
 html{
     font-size: 100%;
     font-family:Arial, Helvetica, sans-serif;
@@ -25,7 +26,8 @@ html{
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-bottom: 1px solid darkred;
+    border-bottom: 1px solid crimson;
+
     //border-radius: 0 24px 0 0;
     //box-shadow: 0px 30px 30px 1px #00000030;
     background-color: white;
@@ -34,7 +36,7 @@ html{
         min-width: 100px;
         height: 80%;
         text-decoration: none;
-        color: black;
+        color: crimson;
         text-align: center;
         //border-radius: 24px;
         cursor: pointer;
@@ -45,147 +47,215 @@ html{
 
 .header{
     z-index: 4;
-    width: auto;
-    height: auto;
-    top: 30px;
+    width: 100vw;
+    height: 500px;
+    bottom: 0;
     
-    left:100%;
+   
  
-    transition: .7s all;
+    transition: .4s all;
     gap: 20px;
     position: fixed;
     padding: 5px;
-
+    border-top: 1px solid crimson;
     border-radius:0 0 0 24px  ;
 
-    border-left: 1px solid darkred;
-    border-bottom: 1px solid darkred;
-
+   
+    
     //box-shadow: 0px 30px 30px 1px #00000030;
     display: flex;
     flex-direction: column;
-    align-items: end;
-    justify-content: space-around;
+    justify-content: center;
+    
 
-    background-color: white;
+    background-color:rgba(255, 255, 255, 0.258);
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
     color: white;
 
-
-    .pizza-header-container{
-        width: 170px;
-        height: 170px;
+    .pizza-container{
+        background-color:whitesmoke;
+        
+        border-radius: 24px;
+        margin: 0 auto;
+        height: 70%;
+        width: 90%;
+        
+        overflow-x: auto;
         position: relative;
-        
         display: flex;
+        flex-direction: row;
         align-items: center;
-        justify-content: center;
-
+       
+        .pizza-header-container{
+            width: auto;
+            //max-width: 100%;
+            
+            height: auto;
+            max-height: 70%;
+            display: flex;
+            
+            //position: relative;
+            
+            
+            .remove-pizza-btn{
+                background-color:white;
+                color: crimson;
+                margin-top: -25px;   
+                width: 100%;
+                border: none;
+                height: 20px;
+            }
+            .pizza-element{
+                background-image: url('https://media.istockphoto.com/id/1400136454/pt/foto/wood-plank-panel-texture-outdated-mahogany-table-background.jpg?s=612x612&w=0&k=20&c=12qxKEdus-k0Py2dpfYngZ6u8PJhvOJJaHEHoNZMRGc=');
+                box-shadow: 0 0 15px 1px sienna;
+                border-radius: 100%;
+                padding: 10px;
+                width: 150px;
+                height: 140px;
+                margin: 0 5px;
+            }
+            .pizza-esquerda{
+                position: absolute;
+                //transform: translateX(100px);
+                width: 150px;
+                height: 150px;
+                
+                
         
-
-        border-radius: 100%;
-        //padding: 10px;
-
-        box-shadow: 0 0 15px 1px sienna;
+                clip-path: inset(0 50% 0 0); /* Corta 50% do lado esquerdo */
+                border-radius: 100%;
+                //background-color:grey;
+    
+                //box-shadow: 0 0 30px 2px grey;
+                p{
+                    color: black;
+                    position: absolute;
+                    width: auto;
+                    right: 50%;
+                    top: 10px;
+                    
+                    background-color: white;
+                    //box-shadow:0 5px  10px 1px black;
+                    padding: 3px;
+                    //border-radius: 24px;
+                    text-align: center;
+                    font-size: .7rem;
+    
+                }
+            }
+            .pizza-direita{
+                position: absolute;
+                width: 150px;
+                height: 150px;
         
-        background-image: url('https://media.istockphoto.com/id/1400136454/pt/foto/wood-plank-panel-texture-outdated-mahogany-table-background.jpg?s=612x612&w=0&k=20&c=12qxKEdus-k0Py2dpfYngZ6u8PJhvOJJaHEHoNZMRGc=');
-        
-        .pizza-esquerda{
-            position: absolute;
-            //transform: translateX(100px);
-            width: 150px;
-            height: 150px;
-
+                clip-path: inset(0 0 0 50%); /* Corta 50% do lado direito */
+                border-radius: 100%;
+                //background-color:grey;
+    
+                //box-shadow: 0 0 30px 2px grey;
+                p{
+                    color: black;
+                    position: absolute;
+                    left: 50%;
+                    top: 10px;
+                    width: auto;
+                    background-color: white;
+                    //box-shadow:0 5px  10px 1px black;
+                    padding: 3px;
+                    //border-radius: 24px;
+                    text-align: center;
+                    font-size: .7rem;
+    
+                }
+            }
+        }
+        .bebidas-header-container{
+            width: auto;
+            height: 120px;
             
     
-            clip-path: inset(0 50% 0 0); /* Corta 50% do lado esquerdo */
-            border-radius: 100%;
-            //background-color:grey;
-
-            //box-shadow: 0 0 30px 2px grey;
-            p{
-                color: black;
-                position: absolute;
-                width: auto;
-                right: 50%;
-
-                background-color: white;
-                box-shadow:0 5px  10px 1px black;
-                padding: 3px;
-                //border-radius: 24px;
-                text-align: center;
-                font-size: .7rem;
-
-            }
-        }
-        .pizza-direita{
-            position: absolute;
-            width: 150px;
-            height: 150px;
-    
-            clip-path: inset(0 0 0 50%); /* Corta 50% do lado direito */
-            border-radius: 100%;
-            //background-color:grey;
-
-            //box-shadow: 0 0 30px 2px grey;
-            p{
-                color: black;
-                position: absolute;
-                left: 50%;
-                width: auto;
-                background-color: white;
-                box-shadow:0 5px  10px 1px black;
-                padding: 3px;
-                //border-radius: 24px;
-                text-align: center;
-                font-size: .7rem;
-
-            }
-        }
-    }
-    .bebidas-header-container{
-        width: auto;
-        height: 120px;
-        
-
-        //position: absolute;
-        //right: 0;
-        //top: 500px;
-        //ackground-color: rgba(177, 79, 79, 0.259);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: row;
-        img{
-            width: auto;
-            height: 100%;
-        }
-        p{
-            font-size: .8rem;
             //position: absolute;
-            right: 0;
-            color: black;
-     
-            background-color: white;
-            box-shadow:0 5px  10px 1px black;
-            padding: 3px;
-            //border-radius: 24px;
-            text-align: center;
+            //right: 0;
+            //top: 500px;
+            //ackground-color: rgba(177, 79, 79, 0.259);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            div{//imagem da coca no header
+                height: 100%;
+                button{ //botão que remove o item do header
+                background-color:white;
+                color: crimson;
+                margin-top: -25px;   
+                width: 100%;
+                border: none;
+                height: 20px;
+                }
+               
+            }
+            img{
+                width: auto;
+                height: 100%;
+            }
+            p{
+                font-size: .8rem;
+                //position: absolute;
+                right: 0;
+                color: black;
+         
+                background-color: white;
+                //box-shadow:0 5px  10px 1px black;
+                padding: 3px;
+                //border-radius: 24px;
+                text-align: center;
+            }
+    
         }
-
     }
-    button{
-        border-radius:0 0 100% 100%;
-        padding: 15px;
-        margin: 0 auto;
-        margin-bottom: -51px;
-        border-bottom: 1px solid darkred;
-        border-left: 1px solid darkred;
-        border-right: 1px solid darkred;
-        border-top: none;
-        background-color: white;
-        color: red;
+    
+  
+    .btn-expand-card{
+        position: fixed;
+        width: 100vw;
+        margin: 10px auto;
+        top: 0px;
+        border: none;
+        color: crimson;
+        font-size: 2rem;
+
+        background-color: transparent;
         cursor: pointer;
         z-index: 6;
+    }
+    .carrinho{
+       
+        button{
+            width: auto;
+            height: 50px;
+            bottom: 0;
+            position: fixed;
+            padding: 10px 20px;
+            background-color:crimson;
+            border-radius: 24px;
+            color: white;
+            //bottom: 10px;
+            right: 20px;
+           
+            margin: 10px;
+            //border: 1px solid darkred;
+            border: none;
+            
+            cursor: pointer;
+    
+            z-index: 5;
+         
+        }
+        button:hover{
+            background-color: whitesmoke;
+            color: crimson;
+        }
     }
     
 }
@@ -193,11 +263,11 @@ html{
 main{
     
     max-width: 1200px;
-    margin: 350px auto auto auto;
+    //margin: 350px auto auto auto;
 
-    height: 2000px;
-
-    background-color:whitesmoke;
+    height: auto;
+    margin: 100px auto;
+    background-color:tomato;
     //-webkit-backdrop-filter: blur(8px);
     //backdrop-filter: blur(8px);
 
@@ -210,30 +280,38 @@ main{
         
 
         display: flex;
-
         flex-direction: column;
         //justify-content: center;
-        
-
         //background-color: rgb(255, 156, 156);
         .pizza-category{
             //background-color: black;
             //text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
             h1{
                 font-size: 1.5rem;
-                margin-left: 20px;
+                margin:20px;
+                width: 100%;
+                color: crimson;
+               
             }
         }
         .bebida-category{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
             //text-align: center;
             //background-color: black;
             h1{
                 font-size: 1.5rem;
-                margin-left: 20px;
+                margin:20px;
+                width: 100%;
+                color: crimson;
             }
         }
         .card{
-            width: 200px;
+            width: 100%;
             height: auto;
             //margin-left: -100px;
 
@@ -242,20 +320,27 @@ main{
             flex-direction: column;
             align-items: center;
             justify-content: space-around;
-
-            background: linear-gradient( white,white);
-          
-            border-radius: 50% 50% 24px 24px;
-            margin: 10px;
+            border: solid white;
+            background-image: url('/public/assets/card-background.png');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            //box-shadow: 0 0 3px .1px white;
+            border-radius: 14px;
+            margin:10px;
+            //border-radius: 50% 50% 24px 24px;
+            
             p{
-                margin: 10px;
+                margin: 0px;
                 font-weight: 100;
                 font-size: .8rem;
                 width: 70%;
-                background-color:white;
+                background-color:rgba(255, 255, 255, 0.214);
+                -webkit-backdrop-filter: blur(30px);
+                backdrop-filter: blur(30px);
                 padding: 10px 5px;
                 border-radius: 4px;
-                border-bottom: 1px solid black;
+                //border-bottom: 1px solid black;
                 
                 i{
                     font-size: 1.5rem;
@@ -264,7 +349,7 @@ main{
                 }
             }
             img{
-                width: 100%;
+                width: 100px;
                 //top: -10px;
                 //margin: 0 auto;
                 //clip-path: inset(0 50% 0 0); /* Corta 50% do lado esquerdo */
@@ -282,49 +367,44 @@ main{
             button:nth-of-type(1), button:nth-of-type(2){
                 display: inline-block;
                 margin-right: 10px; /* Espaço entre os botões */
-                img{
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
+                width: 120px;
+                span{
+                    font-size: 12px;
                 }
                
             }
             button:nth-of-type(1){
-                width: auto;
-                height: 60px;
+              
+                height: auto;
+
+                
         
 
                 //border: 2px solid green;
-                border-color: red;
+                //border-color: blue;
+                padding: 10px;
+                background-color:crimson ;
+                color: white;
                 margin: 4px;
-                border-radius: 24px;
-                background-color: white;
+                border-radius: 4px;
+                //background-color: white;
                 cursor: pointer;
-                img{
-                    height: 100%;
-                    width: auto;
-                    border-radius: 24px;
-                    z-index: 0;
-                    
-                }
+                
             }
             button:nth-of-type(2){
-                width: auto;
-                height: 60px;
+          
+                height: auto;
                 
-
-                border-color: red;
+               
+                padding: 10px;
+                border-color: white;
                 margin: 4px;
-                border-radius: 24px;
-                background-color: white;
+                border-radius: 4px;
+                color: white;
+                background-color:crimson ;
+                
                 cursor: pointer;
-                img{
-                    height: 100%;
-                    width: auto;
-                    border-radius: 24px;
-                    transform: rotate(180deg);
-                    z-index: 0;
-                }
+                
             }
         }
 
@@ -333,25 +413,7 @@ main{
     
 }
 
-.carrinho{
-    button{
-        position: fixed;
-        padding: 10px 20px;
-        background-color:whitesmoke;
-        color: red;
-        //bottom: 10px;
-        right: 20px;
-        top:315px;
-        
-        //border: 1px solid darkred;
-        border: none;
-        border-radius: 24px;
-        cursor: pointer;
 
-        z-index: 5;
-     
-    }
-}
 .carrinho-modal-container{
     display: none;
 
@@ -403,14 +465,17 @@ main{
     
             cursor: pointer;
             text-decoration: none;
-            color: red;
+            color: crimson;
         }
        
         .carrinho-itens{
             width: 95%;
+            margin: 0 auto;
             height: auto;
             text-align: left;
-
+            display: flex;
+            flex-direction:column;
+            gap: 10px;
             background-color: whitesmoke;
             border-radius: 14px;
             padding: 10px;
@@ -419,7 +484,7 @@ main{
             width: 100%;
             height: auto;
             background-color: whitesmoke;
-            color: red;
+            color: crimson;
             display: flex;
             justify-content: space-around;
         }
@@ -433,9 +498,9 @@ main{
     align-items: center;
     justify-content: space-between;
     p{
-        font-size: 1rem;
+        font-size: .8rem;
         font-weight: 100;
-        
+        margin: 0;
         //color: green;
     }
     

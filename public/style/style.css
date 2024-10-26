@@ -211,7 +211,7 @@ html {
 header {
   width: 100vw;
   height: 500px;
-  background-image: url("/public/assets/headerCapa.jpeg");
+  background-image: url("/assets/headerCapa.jpeg");
   background-size: cover;
   background-position: center;
   margin-top: 60px;

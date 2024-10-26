@@ -208,6 +208,15 @@ html {
   color: crimson;
 }
 
+header {
+  width: 100vw;
+  height: 500px;
+  background-image: url("/public/assets/headerCapa.jpeg");
+  background-size: cover;
+  background-position: center;
+  margin-top: 60px;
+}
+
 main {
   max-width: 1200px;
   background-color: whitesmoke;

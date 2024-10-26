@@ -192,34 +192,98 @@ const bebidasHeader = document.querySelector('.bebidas-header-container')
 const mainContainer = document.querySelector('.cards-container')
 
 //FUNÇÃO PARA IDENTIFICAR QUE CLICOU NO BOTÃODE ADICIONAR ESPECÍFICO
-main.addEventListener('click', function(event){
+// Event listener para adicionar bebidas
+main.addEventListener('click', function(event) {
     let parentButton = event.target.closest(".add-to-card-btn-bebidas");
-   
+    
     if (parentButton) {
         const img = parentButton.getAttribute("data-img");
         const name = parentButton.getAttribute("data-name");
         const price = parseFloat(parentButton.getAttribute("data-price"));
-        if(bebidas.length > 0){
-         
-            //btnAddBebida.style.borderColor = 'red'
-            btnAddBebida.innerHTML = 'Adicionar'
-            bebidas.length = 0
-            updateBebidas();
-            uptadetoCardModal();
-        }else{
-            //btnAddBebida.style.borderColor = 'green'
-           
-            btnAddBebida.innerHTML = 'Remover'
-            mandarBebidas(img, name, price)
-           
+        
+        // Procura se essa bebida já existe no carrinho
+        const bebidaExistente = bebidas.find(bebida => bebida.name === name);
+        
+        if (bebidaExistente) {
+            // Se a bebida já existe, aumenta a quantidade
+            bebidaExistente.quantidade += 1;
+            atualizarBotaoAdicionar(name, bebidaExistente.quantidade);
+        } else {
+            // Se a bebida não existe, adiciona ela ao carrinho
+            bebidas.push({
+                img: img,
+                name: name,
+                price: price,
+                quantidade: 1
+            });
+            atualizarBotaoAdicionar(name, 1);
+        }
+        
+        // Atualiza o carrinho
+        updateBebidas();
+        uptadetoCardModal();
+        
+        gsap.fromTo(".bebidas-header-container", 
+            { opacity: 0 }, 
+            { opacity: 1, duration: .5 }
+        );
+    }
+});
+
+// Função para atualizar o texto do botão de adicionar
+function atualizarBotaoAdicionar(name, quantidade) {
+    const addButton = document.querySelector(`[data-name="${name}"]`);
+    if (addButton) {
+        if (quantidade > 0) {
+            addButton.innerHTML = `Adicionado (${quantidade})`;
+        } else {
+            addButton.innerHTML = 'Adicionar';
+        }
+    }
+}
+// Botão para remover uma unidade
+main.addEventListener('click', function(event) {
+    let removeButton = event.target.closest(".remove-bebida-btn");
+    
+    if (removeButton) {
+        const name = removeButton.getAttribute("data-name");
+        const bebida = bebidas.find(b => b.name === name);
+        
+        if (bebida) {
+            bebida.quantidade -= 1;
+            
+            if (bebida.quantidade === 0) {
+                // Remove a bebida do array se a quantidade chegar a 0
+                bebidas = bebidas.filter(b => b.name !== name);
+                // Reseta o botão de adicionar
+                const addButton = document.querySelector(`[data-name="${name}"]`);
+                if (addButton) {
+                    addButton.innerHTML = 'Adicionar';
+                }
+            }
+            
             updateBebidas();
             uptadetoCardModal();
         }
-      
-       
-        gsap.fromTo(".bebidas-header-container", { opacity: 0 }, { opacity: 1, duration: .5 });
     }
 });
+// Função de remover bebida atualizada
+function removeBebida(index) {
+    const bebida = bebidas[index];
+    bebida.quantidade--;
+    
+    // Se a quantidade chegar a zero, remove a bebida do carrinho
+    if (bebida.quantidade === 0) {
+        bebidas.splice(index, 1);
+    }
+    
+    // Atualiza o texto do botão
+    atualizarBotaoAdicionar(bebida.name, bebida.quantidade);
+    
+    // Atualiza o carrinho e o modal
+    updateBebidas();
+    uptadetoCardModal();
+}
 
 // FUNÇÃO PARA MANDAR OS DADOS IDENTIFICADOS ONDE CLICOU PARA O ARRAY DE BEBIDAS
 function mandarBebidas(img, name, price){
@@ -233,29 +297,74 @@ function mandarBebidas(img, name, price){
     uptadetoCardModal()
 }
 
-// Função para remover bebida
-function removeBebida(index) {
-    bebidas.splice(index, 1);
-    updateBebidas();
-    uptadetoCardModal();
-}
-
 //FAZER APARECER A ILUSTRAÇÃO
-function updateBebidas(){
-    bebidasHeader.innerHTML = ``
+// Função updateBebidas atualizada para manter os botões sincronizados
+function updateBebidas() {
+    let total = 0;
+    bebidas.forEach(bebida => {
+        total += bebida.price * bebida.quantidade;
+        // Atualiza o botão de cada bebida no carrinho
+        atualizarBotaoAdicionar(bebida.name, bebida.quantidade);
+    });
+
+    bebidasHeader.innerHTML = '';
     
     bebidas.forEach((item, index) => {
         const bebidaElement = document.createElement('div');
-      
+        bebidaElement.classList.add('bebida-carrinho');
+        
         bebidaElement.innerHTML = `
-            <img src="${item.img}" alt="">
-            <p>${item.name}</p>
+            <div class="bebida-info">
+                <img src="${item.img}" alt="${item.name}">
+               
+            </div>
+            <div class="bebida-controles">
+            <div class="maisMenos">
+                <button class="btn-quantidade diminuir">-</button>    
+                <span class="quantidade">${item.quantidade}</span>
+                <button class="btn-quantidade aumentar">+</button>
+            </div>
+                <p class="preco-total">R$ ${(item.price * item.quantidade).toFixed(2)}</p>
+                <button class="btn-remover">Remover</button>
+            </div>
         `;
 
-        const removeBebidaButton = document.createElement('button');
-        removeBebidaButton.textContent = 'Remover';
-        removeBebidaButton.onclick = () => removeBebida(index);
-        bebidaElement.appendChild(removeBebidaButton);
+        // Botões de controle de quantidade
+        const diminuirBtn = bebidaElement.querySelector('.diminuir');
+        const aumentarBtn = bebidaElement.querySelector('.aumentar');
+        const removerBtn = bebidaElement.querySelector('.btn-remover');
+        
+        diminuirBtn.onclick = () => {
+            if (item.quantidade > 1) {
+                item.quantidade--;
+                atualizarBotaoAdicionar(item.name, item.quantidade);
+                updateBebidas();
+                uptadetoCardModal();
+            }
+        };
+        
+        aumentarBtn.onclick = () => {
+            item.quantidade++;
+            atualizarBotaoAdicionar(item.name, item.quantidade);
+            updateBebidas();
+            uptadetoCardModal();
+        };
+        
+         // Modificado o removerBtn para remover completamente
+         removerBtn.onclick = () => {
+            // Guarda o nome da bebida antes de remover
+            const nomeBebida = item.name;
+            // Remove a bebida do array
+            bebidas.splice(index, 1);
+            // Reseta o botão para "Adicionar"
+            const addButton = document.querySelector(`[data-name="${nomeBebida}"]`);
+            if (addButton) {
+                addButton.innerHTML = 'Adicionar';
+            }
+            // Atualiza o carrinho e o modal
+            updateBebidas();
+            uptadetoCardModal();
+        };
 
         bebidasHeader.appendChild(bebidaElement);
     });
@@ -358,25 +467,35 @@ function uptadetoCardModal(){
     });
 
     bebidas.forEach((item, index) => {
+        // Criar o card da bebida
         const divCard = document.createElement('div')
         divCard.classList.add('carrinho-item')
-        divCard.innerHTML=`
-        <p>Bebida: ${item.name}</p>
-        <p>R$:${item.price.toFixed(2)}</p>
+        
+        // Mostrar nome, quantidade e preço total do item
+        divCard.innerHTML = `
+            <div class="item-info">
+                <p>Bebida: ${item.name}</p>
+                <p>Quantidade: ${item.quantidade}</p>
+                <p>Preço unitário: R$ ${item.price.toFixed(2)}</p>
+                <p>Subtotal: R$ ${(item.price * item.quantidade).toFixed(2)}</p>
+            </div>
         `;
-
+    
+        // Botão de remover
         const removeBebidaButton = document.createElement('button');
         removeBebidaButton.textContent = 'Remover';
+        removeBebidaButton.classList.add('remove-btn');
         removeBebidaButton.onclick = () => removeBebida(index);
         divCard.appendChild(removeBebidaButton);
-
-        //DEFINIR INNERHTML
-        carrinhoItens.appendChild(divCard)
-
-        //SOMAR TOTAL DOS ITENS
-        total += item.price;
+    
+        // Adicionar ao carrinho
+        carrinhoItens.appendChild(divCard);
+    
+        // Somar ao total considerando a quantidade
+        total += item.price * item.quantidade;
     });
-    //DEFINIR VALOR TOTAL DOS ITENS SOMADOS
+    
+    // Mostrar o valor total
     cardTotal.textContent = total.toFixed(2);
 }
 
@@ -449,7 +568,7 @@ buyBtn.addEventListener('click', function(){
     });
 
     bebidas.forEach(item => {
-        message += `Bebida: ${item.name}\n`;
+        message += `Bebida:${item.name}\nQuantidade: ${item.quantidade}Und\n\n`;
         total += item.price;
     });
 

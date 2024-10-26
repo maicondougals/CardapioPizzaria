@@ -3,7 +3,7 @@ body{
     padding: 0;
     box-sizing: border-box;
 
-    background-color: white;
+    background-image: url('/public/assets/body-background.jpeg');
     //background-image: url('https://img.myloview.com.br/fotomurais/pizza-slices-seamless-pattern-hand-drawn-menu-background-with-pizza-and-ingredients-vector-sketch-illustration-engraved-style-food-background-700-202277670.jpg');
 
 }
@@ -16,7 +16,7 @@ html{
 }
 .categoria-container{
     width: 100vw;
-    height: 30px;
+    height: 60px;
 
 
     position: fixed;
@@ -27,17 +27,19 @@ html{
     align-items: center;
     justify-content: space-around;
     border-bottom: 1px solid crimson;
+    box-shadow: 0 0 10px 1px black;
 
     //border-radius: 0 24px 0 0;
     //box-shadow: 0px 30px 30px 1px #00000030;
-    background-color: white;
+    background-color:black;
     z-index: 5;
     a{
         min-width: 100px;
         height: 80%;
         text-decoration: none;
-        color: crimson;
+        color:darkgray;
         text-align: center;
+        transform: translateY(20%);
         //border-radius: 24px;
         cursor: pointer;
         
@@ -68,7 +70,7 @@ html{
     justify-content: center;
     
 
-    background-color:rgba(255, 255, 255, 0.258);
+    background-color:rgba(255, 0, 0, 0.258);
     -webkit-backdrop-filter: blur(30px);
     backdrop-filter: blur(30px);
     color: white;
@@ -80,6 +82,7 @@ html{
         margin: 0 auto;
         height: 70%;
         width: 90%;
+        overflow-y: hidden;
         
         overflow-x: auto;
         position: relative;
@@ -101,7 +104,9 @@ html{
             .remove-pizza-btn{
                 background-color:white;
                 color: crimson;
-                margin-top: -25px;   
+                position: absolute;
+                bottom: 0;
+                border-radius: 24px;
                 width: 100%;
                 border: none;
                 height: 20px;
@@ -114,6 +119,7 @@ html{
                 width: 150px;
                 height: 140px;
                 margin: 0 5px;
+                position: relative;
             }
             .pizza-esquerda{
                 position: absolute;
@@ -183,34 +189,66 @@ html{
             align-items: center;
             justify-content: center;
             flex-direction: row;
+            .bebida-carrinho{
+                //min-width:200px;
+
+                .bebida-info{
+                    img{
+                        width: auto;
+                        height: 100%;
+                    }
+                    
+                }
+                .bebida-controles{
+                    //background-color: blue;
+                    display: flex;
+                    flex-direction: column;
+                  
+                    //flex-direction: column;
+                    
+                    
+                    gap: 15px;
+                    
+                p{
+                    color: red;
+                    margin: 0 auto;
+                    text-align: center;
+                    //width: 100%;
+                    //background-color: black;
+                }
+                .maisMenos{
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    height: auto;
+                    button{
+                        width: 30px;
+                        height: 30px;
+                    }
+                }
+                button{
+                    width: auto;
+                    border-radius: 24px;
+                    background-color:white;
+                    color: crimson;
+                    border: none;
+                    
+                    
+                }
+                .quantidade{
+                    //padding-right: 20px;
+                 
+                    color: red;
+                    
+                }
+            }
+            }
             div{//imagem da coca no header
                 height: 100%;
-                button{ //botão que remove o item do header
-                background-color:white;
-                color: crimson;
-                margin-top: -25px;   
-                width: 100%;
-                border: none;
-                height: 20px;
-                }
-               
+                
             }
-            img{
-                width: auto;
-                height: 100%;
-            }
-            p{
-                font-size: .8rem;
-                //position: absolute;
-                right: 0;
-                color: black;
-         
-                background-color: white;
-                //box-shadow:0 5px  10px 1px black;
-                padding: 3px;
-                //border-radius: 24px;
-                text-align: center;
-            }
+            
     
         }
     }
@@ -264,10 +302,10 @@ main{
     
     max-width: 1200px;
     //margin: 350px auto auto auto;
-
+    background-color: rgba(255, 0, 0, 0.369);
     height: auto;
     margin: 100px auto;
-    background-color:tomato;
+    
     //-webkit-backdrop-filter: blur(8px);
     //backdrop-filter: blur(8px);
 
@@ -321,7 +359,7 @@ main{
             align-items: center;
             justify-content: space-around;
             border: solid white;
-            background-image: url('/assets/card-background.png');
+            background-image: url('/public/assets/card-background.png');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;
@@ -334,10 +372,9 @@ main{
                 margin: 0px;
                 font-weight: 100;
                 font-size: .8rem;
-                width: 70%;
-                background-color:rgba(255, 255, 255, 0.214);
-                -webkit-backdrop-filter: blur(30px);
-                backdrop-filter: blur(30px);
+                width: auto;
+                text-align: center;
+                
                 padding: 10px 5px;
                 border-radius: 4px;
                 //border-bottom: 1px solid black;
